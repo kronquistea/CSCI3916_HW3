@@ -69,10 +69,28 @@ router.post('/signin', async (req, res) => { // Use async/await
 
 router.route('/movies')
     .get(authJwtController.isAuthenticated, async (req, res) => {
-        return res.status(500).json({ success: false, message: 'GET request not supported' });
+        // return res.status(500).json({ success: false, message: 'GET request not supported' });
+
+        const movies = await Movie.find({}); // Fetch all movies from the database
+        return res.json(movies); // Return the movies as JSON
     })
     .post(authJwtController.isAuthenticated, async (req, res) => {
-        return res.status(500).json({ success: false, message: 'POST request not supported' });
+        // return res.status(500).json({ success: false, message: 'POST request not supported' });
+
+        if(!req.body.actors || req.body.actors.length === 0) {
+            return res.status(400).json({ success: false, message: 'At least one actor is required.' }); // 400 Bad Request
+        }
+        else {
+          const movie = new Movie(req.body); // Create a new movie with the request body
+          await movie.save();
+          res.status(201).json({ success: true, msg: 'Movie created successfully.', movie });
+        }
+    })
+    .put(authJwtController.isAuthenticated, async (req, res) => {
+        return res.status(500).json({ success: false, message: 'PUT request not supported' });
+    })
+    .delete(authJwtController.isAuthenticated, async (req, res) => {
+        return res.status(500).json({ success: false, message: 'DELETE request not supported' });
     });
 
 app.use('/', router);
