@@ -93,7 +93,7 @@ router.route('/movies')
       }
     });
 
-route.route('/movies/:title')
+router.route('/movies/:title')
     .get(authJwtController.isAuthenticated, async (req, res) => {
       try {
         const movie = await Movie.findOne({ title: req.params.title }); // Find movie by title
