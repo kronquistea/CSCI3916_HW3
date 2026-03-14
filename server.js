@@ -93,6 +93,36 @@ router.route('/movies')
       }
     });
 
+router.route('/movies/:title')
+    .get(authJwtController.isAuthenticated, async (req, res) => {
+      try{
+        const movie = await Movie.findOne({ title: req.params.title }); // Find movie by title
+        if (!movie) {
+          return res.status(404).json({ success: false, message: 'Movie not found.' }); // 404 Not Found
+        }
+        res.json({success: true, msg: "Movie Found", movie});
+      } catch (err) {
+        console.error(err); // Log the error
+        res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
+      }
+    });
+    // .put(authJwtController.isAuthenticated, async (req, res) => {
+    //   try{
+
+    //   } catch (err) {
+    //     console.error(err); // Log the error
+    //     res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
+    //   }
+    // })
+    // .delete(authJwtController.isAuthenticated, async (req, res) => {
+    //   try{
+
+    //   } catch (err) {
+    //     console.error(err); // Log the error
+    //     res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
+    //   }
+    // });
+
 // router.route('/movies/:title')
 //     .get(authJwtController.isAuthenticated, async (req, res) => {
 //       try {
