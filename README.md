@@ -1,4 +1,12 @@
 # Assignment Three
+## Run my Postman Collection
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/51837676-105b0720-2dbc-4a2c-ae9d-54ad4248d26d?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D51837676-105b0720-2dbc-4a2c-ae9d-54ad4248d26d%26entityType%3Dcollection%26workspaceId%3D0d67b894-4771-4b4b-b3f6-e723f831f409#?env%5Bkronquist-hw3%5D=W3sia2V5IjoidG9rZW4iLCJ2YWx1ZSI6IiIsImVuYWJsZWQiOnRydWUsInR5cGUiOiJhbnkiLCJzZXNzaW9uVmFsdWUiOiJKV1QuLi4iLCJjb21wbGV0ZVNlc3Npb25WYWx1ZSI6IkpXVCBleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKcFpDSTZJalk1WWpVM09ETmtNRGRoWmpZM05UZGhPRFUyWXpJellTSXNJblZ6WlhKdVlXMWxJam9pYm1WM1ZYTmxjaUlzSW1saGRDSTZNVGMzTXpVd01EUTNPQ3dpWlhod0lqb3hOemN6TlRBME1EYzRmUS43UGF5emJZTTNlczJfbGRJRkJKbXRNVHdZWk5QZEZGRE84dGNvc0pELWVrIiwic2Vzc2lvbkluZGV4IjowfV0=)
+
+## Access my Render Endpoints
+[HW3 Web Service](https://dashboard.render.com/web/srv-d6qcld95pdvs73b7q8s0)
+
+[HW3 React Frontend](https://dashboard.render.com/static/srv-d6qd8s4r85hc73er7600)
+
 ## Purpose
 The purpose of this assignment is to get comfortable working with a NoSQL database (MongoDB). 
 
