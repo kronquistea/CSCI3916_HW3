@@ -122,58 +122,18 @@ router.route('/movies/:title')
         res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
       }
     })
-    // .delete(authJwtController.isAuthenticated, async (req, res) => {
-    //   try{
-
-    //   } catch (err) {
-    //     console.error(err); // Log the error
-    //     res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
-    //   }
-    // });
-
-// router.route('/movies/:title')
-//     .get(authJwtController.isAuthenticated, async (req, res) => {
-//       try {
-//         const movie = await Movie.findOne({ title: req.params.title }); // Find movie by title
-//         res.json(movie); // Return the movie as JSON
-//       } catch (err) {
-//         console.error(err); // Log the error
-//         res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
-//       }
-//     })
-//     .put(authJwtController.isAuthenticated, async (req, res) => {
-//       try {
-//         const movie = await Movie.findOneAndUpdate(
-//           { title: req.params.title }, 
-//           req.body, 
-//           { 
-//             new: true, 
-//             runValidators: true 
-//           }
-//         ); // Update movie and return the updated document
-
-//         if (!movie) {
-//           return res.status(404).json({ success: false, message: 'Movie not found.' }); // 404 Not Found
-//         }
-
-//         res.json({ success: true, msg: 'Movie updated successfully.', movie }); // Return success message
-//       } catch (err) {
-//         console.error(err); // Log the error
-//         res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
-//       }
-//     })
-//     .delete(authJwtController.isAuthenticated, async (req, res) => {
-//       try {
-//         const movie = await Movie.findOneAndDelete({ title: req.params.title }); // Delete movie by title
-//         if (!movie) {
-//           return res.status(404).json({ success: false, message: 'Movie not found.' }); // 404 Not Found
-//         }
-//         res.json({ success: true, msg: 'Movie deleted successfully.', movie }); // Return success message
-//       } catch (err) {
-//         console.error(err); // Log the error
-//         res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
-//       }
-//     });
+    .delete(authJwtController.isAuthenticated, async (req, res) => {
+      try{
+        const movie = await Movie.findOneAndDelete({ title: req.params.title }); // Delete movie by title
+        if (!movie) {
+          return res.status(404).json({ success: false, message: 'Movie not found.' }); // 404 Not Found
+        }
+        res.json({ success: true, msg: 'Movie deleted successfully.', movie }); // Return success message
+      } catch (err) {
+        console.error(err); // Log the error
+        res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
+      }
+    });
 
 app.use('/', router);
 
