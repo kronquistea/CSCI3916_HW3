@@ -105,15 +105,23 @@ router.route('/movies/:title')
         console.error(err); // Log the error
         res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
       }
-    });
-    // .put(authJwtController.isAuthenticated, async (req, res) => {
-    //   try{
-
-    //   } catch (err) {
-    //     console.error(err); // Log the error
-    //     res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
-    //   }
-    // })
+    })
+    .put(authJwtController.isAuthenticated, async (req, res) => {
+      try{
+        const movie = await Movie.findOneAndUpdate(
+          { title: req.params.title }, 
+          req.body, 
+          { new: true, runValidators: true } // Return the updated document and run validators
+        );
+        if (!movie) {
+          return res.status(404).json({ success: false, message: 'Movie not found.' }); // 404 Not Found
+        }
+        res.json({ success: true, msg: 'Movie updated successfully.', movie }); // Return success message
+      } catch (err) {
+        console.error(err); // Log the error
+        res.status(500).json({ success: false, message: 'Something went wrong. Please try again later.' }); // 500 Internal Server Error
+      }
+    })
     // .delete(authJwtController.isAuthenticated, async (req, res) => {
     //   try{
 
